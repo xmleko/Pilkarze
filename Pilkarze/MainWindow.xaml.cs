@@ -24,30 +24,30 @@ namespace Pilkarze
 {
     public partial class MainWindow : Window
     {
-            private ObservableCollection<Osoba> osoby;
-            public Osoba EdytowanaOsoba;
+            private ObservableCollection<Pilkarz> pilkarze;
+            public Pilkarz EdytowanyPilkarz;
 
             public MainWindow()
             {
                 InitializeComponent();
 
 
-                string connectionString = "Server = localhost\\SQLEXPRESS; Database = Pilkarze; Integrated Security = SSPI";
+                string connectionString = "Server = localhost; Database = Pilkarze; Integrated Security = SSPI";
                 SqlConnection connection = new SqlConnection(connectionString);
 
                 SqlCommand command = new SqlCommand("selectPilkarze", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                SqlDataAdapter sda = new SqlDataAdapter(command);
+                SqlDataAdapter pilkarz = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
-                sda.Fill(dataTable);
+                pilkarz.Fill(dataTable);
 
-                osoby = new ObservableCollection<Osoba>();
+                pilkarze = new ObservableCollection<Pilkarz>();
 
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    Osoba osoba = new Osoba();
+                    Pilkarz osoba = new Pilkarz();
                     osoba.Id = (int)row["Id"];
                     osoba.Imie = (string)row["Imie"];
                     osoba.Nazwisko = (string)row["Nazwisko"];
@@ -56,34 +56,26 @@ namespace Pilkarze
                     osoba.Cena = (string)row["Cena"];
                     osoba.Klub = (string)row["Klub"];
                     osoba.Reprezentacja = (string)row["Reprezentacja"];
-                    osoby.Add(osoba);
+                    pilkarze.Add(osoba);
                 }
 
-                lvOsoby.ItemsSource = osoby;
+                lvpilkarze.ItemsSource = pilkarze;
 
-                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvOsoby.ItemsSource);
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvpilkarze.ItemsSource);
                 view.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Ascending));
-            }
-
-            private void Button_Click_Zapisz(object sender, RoutedEventArgs e)
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(ObservableCollection<Osoba>));
-                using (Stream s = File.Create("c:/msppro/osoby.xml"))
-                    xs.Serialize(s, osoby);
-                MessageBox.Show("Dane zostały zapisane.");
             }
 
             private void Button_Click_Dodaj(object sender, RoutedEventArgs e)
             {
-                EdytowanaOsoba = new Osoba();
+                EdytowanyPilkarz = new Pilkarz();
                 DodawanieWindow DodawanieWin = new DodawanieWindow(this);
                 DodawanieWin.Show();
             }
 
             private void Button_Click_Edytuj(object sender, RoutedEventArgs e)
             {
-                EdytowanaOsoba = (Osoba)lvOsoby.SelectedItem;
-                if (EdytowanaOsoba == null)
+                EdytowanyPilkarz = (Pilkarz)lvpilkarze.SelectedItem;
+                if (EdytowanyPilkarz == null)
                     return;
                 EdycjaWindow EdycjaWin = new EdycjaWindow(this);
                 EdycjaWin.Show();
@@ -91,17 +83,32 @@ namespace Pilkarze
 
             private void Button_Click_Usun(object sender, RoutedEventArgs e)
             {
-                Osoba UsuwanaOsoba = (Osoba)lvOsoby.SelectedItem;
-                if (UsuwanaOsoba == null)
+                Pilkarz UsuwanyPilkarz = (Pilkarz)lvpilkarze.SelectedItem;
+                if (UsuwanyPilkarz == null)
                     return;
 
-                osoby.Remove(UsuwanaOsoba);
-            }
+                pilkarze.Remove(UsuwanyPilkarz);
 
-            public void addItemToList()
+            //    string connectionString = "Server = localhost; Database = Pilkarze; Integrated Security = SSPI";
+           //    SqlConnection connection = new SqlConnection(connectionString);
+             //   SqlDataAdapter adapter = new SqlDataAdapter("UserDelete", connection);
+           //     connection.Open();
+            //    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //    adapter.SelectCommand.Parameters.Add("@Id", SqlDbType.Int).Value = id.Text
+             //   adapter.SelectCommand.ExecuteNonQuery();
+             //   connection.Close();
+            //    MessageBox.Show("Usunięto pomyślnie..");
+        }
+
+            private void Button_Click_Raport(object sender, RoutedEventArgs e)
             {
-                this.osoby.Add(EdytowanaOsoba);
+                Raport raports = new Raport();
+                raports.Show();
             }
 
+        public void addItemToList()
+            {
+                this.pilkarze.Add(EdytowanyPilkarz);
+            }
     }
 }

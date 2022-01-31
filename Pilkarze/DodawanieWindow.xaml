@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pilkarze"
         mc:Ignorable="d"
-        Title="Dodawanie Osoby" Height="360" Width="400">
+        Title="Dodawanie pilkarze" Height="360" Width="400">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +27,28 @@ namespace Pilkarze
         {
             this.MainWindow = window;
             InitializeComponent();
-            this.DataContext = MainWindow.EdytowanaOsoba;
+            this.DataContext = MainWindow.EdytowanyPilkarz;
         }
 
         private void ButtonZapisz_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            string connectionString = "Server = localhost; Database = Pilkarze; Integrated Security = SSPI";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter("UserEdit", connection);
+            connection.Open();
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add("@Id", SqlDbType.Int).Value = id.Text;
+            adapter.SelectCommand.Parameters.Add("@Imie", SqlDbType.VarChar, (50)).Value = imie.Text;
+            adapter.SelectCommand.Parameters.Add("@Nazwisko", SqlDbType.VarChar, (50)).Value = nazwisko.Text;
+            adapter.SelectCommand.Parameters.Add("@Wiek", SqlDbType.VarChar, (50)).Value = wiek.Text;
+            adapter.SelectCommand.Parameters.Add("@Pozycja", SqlDbType.VarChar, (50)).Value = pozycja.Text;
+            adapter.SelectCommand.Parameters.Add("@Cena", SqlDbType.VarChar, (50)).Value = cena.Text;
+            adapter.SelectCommand.Parameters.Add("@Klub", SqlDbType.VarChar, (50)).Value = klub.Text;
+            adapter.SelectCommand.Parameters.Add("@Reprezentacja", SqlDbType.VarChar, (50)).Value = reprezentacja.Text;
+            adapter.SelectCommand.ExecuteNonQuery();
+            connection.Close();
+            MessageBox.Show("Edytowano pomyślnie..");
         }
     }
 }

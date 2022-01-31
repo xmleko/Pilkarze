@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pilkarze"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="950">
+        Title="Pilkarze" Height="400" Width="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -17,7 +17,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="110"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView Margin="10" Name="lvOsoby" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+        <ListView Margin="10" Name="lvpilkarze" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
@@ -33,10 +33,10 @@
         </ListView>
 
         <Button Content="Dodaj pozycję" Grid.Row="0" Grid.Column="1" Click="Button_Click_Dodaj" Height="30" Margin="5"/>
-        <Button Content="Edytuj pozycję" Grid.Row="1" Grid.Column="1" Click="Button_Click_Edytuj" Height="30" Margin="5"/>
-        <Button Content="Usuń pozycję" Grid.Row="2" Grid.Column="1" Click="Button_Click_Usun" Height="30" Margin="5"/>
+        <Button Content="Edytuj pozycję" Grid.Row="1" Grid.Column="1" Click="Button_Click_Edytuj" Margin="5,30,5,41"/>
+        <Button Content="Usuń pozycję" Grid.Column="1" Click="Button_Click_Usun" Margin="5,87,5,91" Grid.RowSpan="2"/>
+        <Button Content="Raport" Grid.Column="1" Click="Button_Click_Raport" Margin="5,83,5,94" Grid.Row="1" Grid.RowSpan="2"/>
 
-        <Button Content="Zapisz listę" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Click_Zapisz" Margin="5"/>
 
     </Grid>
 </Window>

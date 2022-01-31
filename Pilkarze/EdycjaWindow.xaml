@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pilkarze"
         mc:Ignorable="d"
-        Title="Edycja osoby" Height="300" Width="400">
-    <Grid Margin="20">
+        Title="Edycja pilkarze" Height="440" Width="400">
+    <Grid Margin="20,20,20,86">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -20,19 +24,31 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Imię:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
-        <TextBox Name="imie" Width="200" Grid.Row="0" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Id:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="id" Width="200" Grid.Row="0" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBlock Text="Nazwisko:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
-        <TextBox Name="nazwisko" Width="200" Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Nazwisko, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Imię:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="imie" Width="200" Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBlock Text="Pesel:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
-        <TextBox Name="pesel" Width="200" Grid.Row="2" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Pesel, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Nazwisko:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="nazwisko" Width="200" Grid.Row="2" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Nazwisko, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBlock Text="Płeć:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
-        <ComboBox Name="plec" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5" Width="100" Text="{Binding Plec, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Wiek:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="wiek" Width="200" Grid.Row="3" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Wiek, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button Grid.ColumnSpan="2" Content="Zapisz" Grid.Row="4" Grid.Column="0" Margin="10" Width="100"
+        <TextBlock Text="Pozycja:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="pozycja" Width="200" Grid.Row="4" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Pozycja, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Text="Cena:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="cena" Width="200" Grid.Row="5" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Cena, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Text="Klub:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="klub" Width="200" Grid.Row="6" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Klub, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Text="Reprezentacja:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+        <TextBox Name="reprezentacja" Width="200" Grid.Row="7" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Text="{Binding Reprezentacja, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Content="Zapisz" Grid.Row="8" Grid.Column="1" Margin="50,8,122,-14"
                 Click="ButtonZapisz_Click"/>
 
     </Grid>

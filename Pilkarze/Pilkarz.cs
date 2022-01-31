@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pilkarze
 {
-    public class Osoba : INotifyPropertyChanged
+    public class Pilkarz : INotifyPropertyChanged
     {
 
         private int _Id;
@@ -76,7 +76,7 @@ namespace Pilkarze
 
         public string Pozycja
         {
-            get { return this._Pozycja; }
+            get { return this._Pozycja; } 
             set
             {
                 if (this._Pozycja != value)
